@@ -13,8 +13,7 @@
 	</form>
 	<h3>Pour l'instant les éléves sont : </h3>
 	<ul>
-		<% @result.each_slice(4).with_index do |items,index| %>
-		<li>Pour le groupe numéro <%= index+1 %></li>
+		<% @result.each_slice(1).with_index do |items| %>
 		<ul>
 			<li><%= items.join("<br /><li>") %></li>
 		</ul>

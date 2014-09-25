@@ -4,26 +4,27 @@ set :static, true
 set :public_folder, 'public'
 set :views, "views"
 
-def new_random_groups
-
-    studentname = ["Damien", "Rafik", "Benoit", "Anne-Marie", "Faz", "Son", "Stephane", "Mylene", "Abdrahmane", "Nolan", "Man", "Houda", "Mouna", "Guillaume", "Fanta", "Myriam", "Genevieve", "Semia", "Djibril", "Alexandra", "Guibril", "Mehdi", "Aurelie" ]
-	   
-	numgroup = 4# We add to_i otherwise we get a string
+def new_random_groups(numgroup)
+    studentname = IO.readlines('public/names.txt').map{ |element| element.chomp}.shuffle
+	numgroup = 1 #Comment ne pas mettre cette valeur?
 	numstudent = studentname.length
-	studentname.each_slice(numgroup).with_index do |items,index|
-    	puts "Group #{index+1} with #{items.length} students: \n - #{items.join("\n - ")}"
+	groups = (1..numgroup).zip(*studentname.each_slice(numgroup))
+	groups.each do |index, *items|
+    	items.compact! #remove nils
+    	#puts "Group #{index+1} with #{items.length} students: \n - #{items.join("\n - ")}"
 	end
 	studentname.shuffle
 end
 
 
 get '/' do
-    #redirect '/index.html'
-    @result = new_random_groups
+    @result = new_random_groups(1)
   	erb :hello_form
 end
 
 post '/hello/' do
     numgroup = params[:numgroup].to_i || 1
+    @result = new_random_groups(@numgroup)
+    @numgroup = numgroup
     erb :index, :locals => {'numgroup' => numgroup}
 end

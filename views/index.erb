@@ -1,3 +1,11 @@
-<p>
-Le nombre de groupe est de  <em style="color: green; font-size: 2em;"><%= numgroup*numgroup %></em>.
-</p>
+<h3>Il y a <%= numgroup %> groupes : </h3>
+	<ul>
+		<% groups = (1..@numgroup).zip(*@result.each_slice(@numgroup))
+			groups.each do |index, *items|
+    		items.compact! #remove nils %>
+    	<li>Pour le groupe numéro <%= index %></li>
+		<ul>
+			<li><%= items.join("<br /><li>") %></li>
+		</ul>
+		<% end %>
+	</ul>

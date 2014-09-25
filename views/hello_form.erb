@@ -1,18 +1,24 @@
 <html>
-    <head>
-        <title>Sample Web Form</title>
-    </head>
+<head>
+	<title>Sample Web Form</title>
+</head>
 <body>
 
-<h1>Fill Out This Form</h1>
+	<h1>Fill Out This Form</h1>
 
-<form action="/hello/" method="POST">
-    A Greeting: <input type="text" name="greeting">
-    <br/>
-    Your Name: <input type="text" name="name">
-    <br/>
-    <input type="submit">
-</form>
-
+	<form action="/hello/" method="POST">
+		Nombre de groupe :  <input type="number" name="numgroup">
+		<br/>
+		<input type="submit">
+	</form>
+	<h3>Pour l'instant les éléves sont : </h3>
+	<ul>
+		<% @result.each_slice(4).with_index do |items,index| %>
+		<li>Pour le groupe numéro <%= index+1 %></li>
+		<ul>
+			<li><%= items.join("<br /><li>") %></li>
+		</ul>
+		<% end %>
+	</ul>
 </body>
 </html>

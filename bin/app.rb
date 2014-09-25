@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'bin/new_random_groups'
+require './bin/new_random_groups'
 
 set :static, true
 set :public_folder, 'public'

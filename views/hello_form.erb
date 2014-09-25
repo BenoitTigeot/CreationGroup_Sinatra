@@ -1,11 +1,8 @@
+<h2>Combien souhaitez vous de groupe?</h2>
 
-	<h2>Combien souhaitez vous de groupe?</h2>
+<form action="/hello/" method="POST">
+	Nombre de groupe :  <input type="number" name="numgroup">
+	<input type="submit">
+</form>
 
-	<form action="/hello/" method="POST">
-		Nombre de groupe :  <input type="number" name="numgroup">
-		<input type="submit">
-	</form>
-	<%= @result %>
-	</ul>
-</body>
-</html>
+<%= @result %>

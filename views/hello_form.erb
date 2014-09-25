@@ -1,23 +1,11 @@
-<html>
-<head>
-	<title>Sample Web Form</title>
-</head>
-<body>
 
-	<h1>Fill Out This Form</h1>
+	<h2>Combien souhaitez vous de groupe?</h2>
 
 	<form action="/hello/" method="POST">
 		Nombre de groupe :  <input type="number" name="numgroup">
-		<br/>
 		<input type="submit">
 	</form>
-	<h3>Pour l'instant les éléves sont : </h3>
-	<ul>
-		<% @result.each_slice(1).with_index do |items| %>
-		<ul>
-			<li><%= items.join("<br /><li>") %></li>
-		</ul>
-		<% end %>
+	<%= @result %>
 	</ul>
 </body>
 </html>

@@ -6,5 +6,10 @@ gem 'sinatra'
 
 group :development do
 	gem 'rerun'
-	# gem 'shotgun'
+	gem 'minitest'
+	gem 'rspec'
+	gem 'rake'
+	gem 'rack-test'
+	gem 'rspec-rerun'
+	gem 'minitest-reporters'
 end

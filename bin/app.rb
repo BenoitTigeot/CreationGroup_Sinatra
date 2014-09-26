@@ -10,8 +10,13 @@ get '/' do
 	erb :hello_form
 end
 
-post '/hello/' do
-	numgroup = params[:numgroup].to_i
+get '/numgroup/' do
+	@result = new_random_groups(1)
+    erb :index
+end
+
+post '/numgroup/' do
+	numgroup = params[:numbergroup].to_i
 	@result = new_random_groups(numgroup)
-	erb :index, :locals => {'numgroup' => numgroup}
+	erb :index, :locals => {'numbergroup' => numgroup}
 end
